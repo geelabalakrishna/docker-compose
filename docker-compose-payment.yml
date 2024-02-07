@@ -1,0 +1,78 @@
+networks:
+  roboshop:
+    driver: bridge
+services:
+  mongodb:
+    image: gbalakrishna/mongodb:v.0.0.1
+    container_name: mongodb
+    networks:
+    - roboshop
+  catalogue:
+    image: gbalakrishna/catalogue:v.0.0.1
+    container_name: catalogue
+    networks:
+    - roboshop
+    depends_on:
+    - mongodb
+  redis:
+    image: gbalakrishna/redis:v.0.0.1
+    container_name: redis
+    networks:
+    - roboshop
+  user:
+    image: gbalakrishna/user:v.0.0.1
+    container_name: user
+    networks:
+    - roboshop
+    depends_on:
+    - mongodb
+    - redis
+  cart:
+    image: gbalakrishna/cart:v.0.0.1
+    container_name: cart
+    networks:
+    - roboshop
+    depends_on:
+    - redis
+    - catalogue
+  mysql:
+    image: gbalakrishna/mysql:v.0.0.1
+    container_name: mysql
+    networks:
+    - roboshop
+  shipping:
+    image: gbalakrishna/shipping:v.0.0.1
+    container_name: shipping
+    networks:
+    - roboshop
+    depends_on:
+    - cart
+    - mysql
+  rabbitmq:
+    image: rabbitmq
+    container_name: rabbitmq
+    networks:
+    - roboshop
+
+  payment:
+    image: gbalakrishna/payment:v.0.0.1
+    container_name: payment
+    networks:
+    - roboshop
+    depends_on:
+    - rabbitmq
+  web:
+    image: gbalakrishna/web:v.1.0.1
+    container_name: web
+    networks:
+    - roboshop
+    ports:
+    - "80:80"
+    depends_on:
+    - catalogue
+    - user
+    - cart
+    - mysql
+    - shipping
+    - payment
+
