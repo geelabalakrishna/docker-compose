@@ -15,7 +15,7 @@ services:
     depends_on:
     - mongodb
   web:
-    image: gbalakrishna/web:v.1.0.1
+    image: gbalakrishna/web:v.0.0.1
     container_name: web
     networks:
     - roboshop
