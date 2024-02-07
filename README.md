@@ -30,4 +30,7 @@ chmod +x ~/.docker/cli-plugins/docker-compose
 ```
  docker compose version
  ```
+ ```
+ docker compose -f {compose file name} up -d  
  
+ ```
