@@ -46,6 +46,7 @@ services:
     networks:
     - roboshop
     depends_on:
+    - cart
     - mysql
   web:
     image: gbalakrishna/web:v.1.0.0
