@@ -14,8 +14,21 @@ services:
     - roboshop
     depends_on:
     - mongodb
+  redis:
+    image: gbalakrishna/redis:v.0.0.1
+    container_name: redis
+    networks:
+    - roboshop
+  user:
+    image: gbalakrishna/user:v.0.0.1
+    container_name: user
+    networks:
+    - roboshop
+    depends_on:
+    - mongodb
+    - redis
   web:
-    image: gbalakrishna/web:v.0.0.1
+    image: gbalakrishna/web:v.0.1.0
     container_name: web
     networks:
     - roboshop
@@ -23,3 +36,6 @@ services:
     - "80:80"
     depends_on:
     - catalogue
+    - user
+
+
