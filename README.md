@@ -5,6 +5,12 @@ user  web:v.0.1.0
 cart  web:v.0.1.1
 shipping web:v.1.0.0
 
+- docker install
+```
+apt update && apt install docker.io -y
+
+```
+
 - docker compose install ubuntu 22.04
 
 ```
