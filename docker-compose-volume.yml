@@ -11,8 +11,8 @@ services:
     image: gbalakrishna/mongodb:v.0.0.1
     container_name: mongodb
     volumes:
-    - source=mongodb
-      target=/data/db
+    - source: mongodb
+      target: /data/db
       type: volume
     networks:
     - roboshop
@@ -27,8 +27,8 @@ services:
     image: gbalakrishna/redis:v.0.0.1
     container_name: redis
     volumes:
-    - source=redis
-      target=/data
+    - source: redis
+      target: /data
       type: volume    
     networks:
     - roboshop
@@ -52,8 +52,8 @@ services:
     image: gbalakrishna/mysql:v.0.0.1
     container_name: mysql
     volumes:
-    - source=mysql
-      target=/var/lib/mysql
+    - source: mysql
+      target: /var/lib/mysql
       type: volume
     networks:
     - roboshop
@@ -68,9 +68,9 @@ services:
   rabbitmq:
     image: rabbitmq
     container_name: rabbitmq
-        volumes:
-    - source=rabbitmq
-      target=/var/lib/rabbitmq
+    volumes:
+    - source: rabbitmq
+      target: /var/lib/rabbitmq
       type: volume
     networks:
     - roboshop
