@@ -1,4 +1,4 @@
-# docker-compose
+# Docker-Compose
 docker-compose
 catalogue web:v.0.0.1
 user  web:v.0.1.0
